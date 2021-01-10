@@ -1,9 +1,12 @@
-export interface Props {
-  children: React.ReactNode[];
+export interface CommonProps{
   className: string;
   renderCount?: number;
   threshold?: number;
   root?: null | HTMLElement;
+}
+
+export interface Props extends CommonProps{
+  children: React.ReactNode[];
 }
 
 export interface ReactDom extends React.ReactElement{

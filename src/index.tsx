@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { v4 as uuidV4 } from "uuid";
 import { loadPolyfills } from "./utils/polyfill";
+import { useShouldUpdate } from './utils/hooks';
 import { Props, ReactDom, IntersectionObserverEntryFace, IntersectionObserverCase } from './typings';
 loadPolyfills();
 const { useState, useMemo, useCallback, memo, createElement, useRef, useEffect } = React;
@@ -40,7 +41,7 @@ const LazyList = ({
   renderListRef.current = renderList;
 
   const observerCallback = useCallback(
-    (entries:any[]) => {
+    (entries:any[]):void => {
       entries.forEach((ele:IntersectionObserverEntryFace) => {
         const isIntersecting = ele.isIntersecting;
         if (!isIntersecting) return;
@@ -65,7 +66,7 @@ const LazyList = ({
 
   useEffect(() => {
     const container = item.current || {};
-    Array.from(container.children).forEach((ele:HTMLElement) => {
+    Array.from(container.children).forEach((ele:HTMLElement):void => {
       if (ele.dataset.observe === 'true') {
         return io.current && io.current.unobserve(ele);
       }
@@ -84,5 +85,4 @@ const LazyList = ({
     <div className={className} ref={item}>{renderList}</div>
   )
 }
-export default memo(LazyList);
-// "build": "microbundle-crl --no-compress --format modern,esm"
+export default memo(LazyList,useShouldUpdate);
