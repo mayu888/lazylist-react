@@ -8,6 +8,7 @@ const { useState, useMemo, useCallback, memo, createElement, useRef, useEffect }
 
 const LazyList = ({
   children = [],
+  tag = 'div',
   className = '',
   renderCount = 1,
   threshold = 0,
@@ -82,7 +83,7 @@ const LazyList = ({
   }, []);
 
   return (
-    <div className={className} ref={item}>{renderList}</div>
+    createElement(tag,{ className:className,ref:item },renderList)
   )
 }
 export default memo(LazyList,useShouldUpdate);

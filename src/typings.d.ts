@@ -1,5 +1,6 @@
 export interface CommonProps{
   className: string;
+  tag?: string;
   renderCount?: number;
   threshold?: number;
   root?: null | HTMLElement;

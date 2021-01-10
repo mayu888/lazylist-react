@@ -33,17 +33,22 @@ export const useShouldUpdate = (pre:any, next:any) => {
     className:pre.className,
     renderCount:pre.renderCount,
     threshold:pre.threshold,
-    root:pre.root
+    root:pre.root,
+    tag:pre.tag,
   }
   const nextProps:CommonProps = {
     className:next.className,
     renderCount:next.renderCount,
     threshold:next.threshold,
-    root:next.root
+    root:next.root,
+    tag:next.tag,
   }
   hasChange = equal(preProps,nextProps);
   if(preChildren.length<=100 && nextChildren.length<=100){
     hasChange = equal(preChildren,nextChildren);
+  }else{
+    const lengthChange = preChildren.length !== nextChildren.length;
+    hasChange = lengthChange ? false : hasChange;
   }
   return hasChange;
 };
