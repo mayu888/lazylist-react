@@ -2,17 +2,18 @@ import * as React from 'react';
 import { v4 as uuidV4 } from "uuid";
 import { loadPolyfills } from "./utils/polyfill";
 import { useShouldUpdate } from './utils/hooks';
-import { Props, ReactDom, IntersectionObserverEntryFace, IntersectionObserverCase } from './typings';
+import { Props, ReactDom, IntersectionObserverEntryFace, IntersectionObserverCase, keyI } from './typings';
 loadPolyfills();
 const { useState, useMemo, useCallback, memo, createElement, useRef, useEffect } = React;
 
-const LazyList = ({
+const LazyList : React.FC = ({
   children = [],
   tag = 'div',
   className = '',
   renderCount = 1,
   threshold = 0,
   root = null,
+  warpTag = 'div',
 }: Props) => {
   const [renderIndex, setRenderIndex] = useState<number>(renderCount);
   const cloneChildrenRef= useRef<ReactDom[]>([]);
@@ -26,11 +27,11 @@ const LazyList = ({
   const cloneChildren: ReactDom[] = useMemo(() => {
     return children.map((item: ReactDom) => {
       const { type, props, ref, key } = item;
-      const uuid: string = uuidV4();
-      const ele: ReactDom = createElement(type, { ...props, key: key || uuid, ref, "data-key": key || uuid });
-      return ele;
+      const uuid: keyI = uuidV4();
+      const ele: ReactDom = createElement(type, { ...props, key: key || uuid, ref });
+      return createElement(warpTag,{ "data-key": key || uuid },ele)
     })
-  }, [children]);
+  }, [children,warpTag]);
 
   cloneChildrenRef.current = cloneChildren;
   length.current = cloneChildren.length;

@@ -1,5 +1,6 @@
 export interface CommonProps{
-  className: string;
+  warpTag?:string;
+  className?: string;
   tag?: string;
   renderCount?: number;
   threshold?: number;
@@ -30,3 +31,5 @@ export interface IntersectionObserverCase{
   takeRecords: () => any[];
   unobserve: (arg0: HTMLElement) => void;
 }
+
+export type keyI = string | React.ReactText | number;
