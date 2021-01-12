@@ -3,7 +3,7 @@
 [![NPM](https://img.shields.io/npm/v/lazylist-react.svg)](https://www.npmjs.com/package/lazylist-react) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Please understand before using
-This is a lazy loading component based on intersectionObserver.The child elements under this component render one by default, and When the rendered subcomponent appears in the view, it continues to render the next one, and so on. 
+This is a lazy loading component based on intersectionObserver.The child elements under this component render one by default, and When the rendered subcomponent appears in the view, it continues to render the next one, and so on. Each child element is wrapped in a layer of `warpTag`, You can define its type.
 `The version of react must be greater than or equal to 16.8. Because the component form is hooks.`
 
 ## Install
@@ -61,10 +61,11 @@ const Example = () => {
 |  attribute   |  value  |   type   |   describe   |
 |--------------|---------|----------|--------------|
 | **className**|         |  string  | the classname of container|
-|  **tag**     | `defaultvalue`: `div`| string | the nodetype of  container|
-|**renderCount**|`defaultvalue`: 1  | number | Number of DOMS per rendering |
-|**threshold** | `defaultvalue`:0  | number | Rendered elements will continue to render at this scale in the viewport |
-| **root**   | defaultvalue:`window`|HTMLElement| View |
+|  **tag**     | `default`: div| string | the nodetype of  container|
+|**renderCount**|`default`: 1 | number | Number of DOMS per rendering |
+|**threshold** | `default`:0  | number | Rendered elements will continue to render at this scale in the viewport |
+| **root**   | `default`:`window`|HTMLElement| View |
+| **warpTag**   | `default`:div|HTMLElement| A label that wraps each child element |
 
 
 ## License

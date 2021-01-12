@@ -2,7 +2,7 @@ import * as React from 'react';
 import { v4 as uuidV4 } from "uuid";
 import { loadPolyfills } from "./utils/polyfill";
 import { useShouldUpdate } from './utils/hooks';
-import { Props, ReactDom, IntersectionObserverEntryFace, IntersectionObserverCase, keyI } from './typings';
+import { Props, ReactDom, IntersectionObserverEntryFace, IntersectionObserverCase } from './typings';
 loadPolyfills();
 const { useState, useMemo, useCallback, memo, createElement, useRef, useEffect } = React;
 
@@ -26,10 +26,8 @@ const LazyList : React.FC = ({
 
   const cloneChildren: ReactDom[] = useMemo(() => {
     return children.map((item: ReactDom) => {
-      const { type, props, ref, key } = item;
-      const uuid: keyI = uuidV4();
-      const ele: ReactDom = createElement(type, { ...props, key: key || uuid, ref });
-      return createElement(warpTag,{ "data-key": key || uuid },ele)
+      const uuid: string = uuidV4();
+      return createElement(warpTag,{ "data-key": uuid, key:uuid },item)
     })
   }, [children,warpTag]);
 
@@ -81,7 +79,7 @@ const LazyList : React.FC = ({
       threshold,
       root,
     });
-  }, []);
+  }, [threshold,root]);
 
   return (
     createElement(tag,{ className:className,ref:item },renderList)
