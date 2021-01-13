@@ -43,12 +43,17 @@ export const useShouldUpdate = (pre:any, next:any) => {
     root:next.root,
     tag:next.tag,
   }
-  hasChange = equal(preProps,nextProps);
-  if(preChildren.length<=100 && nextChildren.length<=100){
-    hasChange = equal(preChildren,nextChildren);
-  }else{
-    const lengthChange = preChildren.length !== nextChildren.length;
-    hasChange = lengthChange ? false : hasChange;
+  hasChange = equal(preProps, nextProps);
+  try {
+    if(preChildren.length<=100 && nextChildren.length<=100){
+      const preKeys = preChildren.map(ele => ele.key);
+      const nextKeys = nextChildren.map(ele => ele.key);
+      hasChange = equal(preKeys,nextKeys);
+    }else{
+      const lengthChange = preChildren.length !== nextChildren.length;
+      hasChange = lengthChange ? false : hasChange;
+    }
+  } catch (err) {
   }
   return hasChange;
 };
