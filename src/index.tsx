@@ -48,13 +48,13 @@ const LazyList : React.FC = ({
         ele.target.setAttribute("data-observe", "true");
         const key: string | undefined = ele.target.dataset.key;
         const index: number = cloneChildrenRef.current.findIndex(
-          (item) => item.key === key
+          (item:any) => item.key === key
         ) || 0;
         const t = (maxRef.current = Math.max(index, maxRef.current));
         io.current && io.current.unobserve && io.current.unobserve(ele.target);
         if (renderListRef.current.length === t + 1) {
         ele.target.setAttribute("data-observe", 'false');
-          setRenderIndex((pre) => {
+          setRenderIndex((pre:number) => {
             if (pre >= length.current) return length.current;
             return pre + renderCount;
           });
@@ -63,6 +63,16 @@ const LazyList : React.FC = ({
     },
     [renderIndex]
   );
+
+  useEffect(() => {
+    io.current = new IntersectionObserver(observerCallback, {
+      threshold,
+      root,
+    });
+    return () => {
+      io.current && io.current.disconnect();
+    }
+  }, [threshold,root,renderList]);
 
   useEffect(() => {
     const container = item.current || {};
@@ -74,12 +84,7 @@ const LazyList : React.FC = ({
     });
   }, [renderList]);
 
-  useEffect(() => {
-    io.current = new IntersectionObserver(observerCallback, {
-      threshold,
-      root,
-    });
-  }, [threshold,root]);
+
 
   return (
     createElement(tag,{ className:className,ref:item },renderList)
