@@ -1,4 +1,4 @@
-# react-lazylist
+# lazylist-react
 
 [![NPM](https://img.shields.io/npm/v/lazylist-react.svg)](https://www.npmjs.com/package/lazylist-react) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
