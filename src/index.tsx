@@ -6,7 +6,7 @@ import { Props, ReactDom, IntersectionObserverEntryFace, IntersectionObserverCas
 loadPolyfills();
 const { useState, useMemo, useCallback, memo, createElement, useRef, useEffect } = React;
 
-const LazyList : React.FC = ({
+const LazyList : React.FC<Props> = ({
   children = [],
   tag = 'div',
   className = '',
