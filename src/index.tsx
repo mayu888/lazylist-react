@@ -27,7 +27,7 @@ const LazyList : React.FC<Props> = ({
   const cloneChildren: ReactDom[] = useMemo(() => {
     return children.map((item: ReactDom) => {
       const key = item.key || uuidV4();
-      return createElement(warpTag,{ "data-key": key, key },item)
+      return createElement(warpTag,{ "data-key": key, key,className:'lazylist_warp_tag' },item)
     })
   }, [children,warpTag]);
 
