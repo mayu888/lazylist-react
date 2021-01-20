@@ -13,7 +13,16 @@ npm install --save lazylist-react
 // or
 yarn add lazylist-react
 ```
-
+## Props
+|  attribute   |  value  |   type   |   describe   |
+|--------------|---------|----------|--------------|
+| **className**|         |  string  | the classname of container|
+|  **tag**     | `default`: div| string | the nodetype of  container|
+|**renderCount**|`default`: 1 | number | Number of DOMS per rendering |
+|**threshold** | `default`:0  | number | Rendered elements will continue to render at this scale in the viewport |
+| **root**   | `default`:`window`|HTMLElement| View |
+| **warpTag**   | `default`:div|HTMLElement| A label that wraps each child element |
+| **renderCallback**   | (containerInfo,containerVdom,index) => void | Callback function with standard rendering quantity|
 ## Usage
 
 ```tsx
@@ -56,16 +65,6 @@ const Example = () => {
 }
 
 ```
-
-## Props
-|  attribute   |  value  |   type   |   describe   |
-|--------------|---------|----------|--------------|
-| **className**|         |  string  | the classname of container|
-|  **tag**     | `default`: div| string | the nodetype of  container|
-|**renderCount**|`default`: 1 | number | Number of DOMS per rendering |
-|**threshold** | `default`:0  | number | Rendered elements will continue to render at this scale in the viewport |
-| **root**   | `default`:`window`|HTMLElement| View |
-| **warpTag**   | `default`:div|HTMLElement| A label that wraps each child element |
 
 
 ## License
