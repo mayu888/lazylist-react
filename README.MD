@@ -7,7 +7,6 @@ This is a lazy loading component based on intersectionObserver.The child element
 `The version of react must be greater than or equal to 16.8. Because the component form is hooks.`
 
 ## Install
-
 ```bash
 npm install --save lazylist-react
 // or
