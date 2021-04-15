@@ -11,6 +11,7 @@ This is a lazy loading component based on intersectionObserver.The child element
 npm install --save lazylist-react
 // or
 yarn add lazylist-react
+
 ```
 ## Props
 |  attribute   |  value  |   type   |   describe   |
