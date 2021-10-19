@@ -17,6 +17,9 @@
     "noUnusedParameters": true,
     "allowSyntheticDefaultImports": true
   },
+  "typeRoots": [                            /* 要包含的类型声明文件路径列表*/
+    "./src/*.d.ts",
+    ],  
   "include": ["src"],
   "exclude": ["node_modules", "dist", "example"]
 }
