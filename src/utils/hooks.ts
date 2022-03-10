@@ -50,8 +50,9 @@ export const useShouldUpdate = (pre:any, next:any) => {
       const nextKeys = nextChildren.map(ele => ele.key);
       hasChange = equal(preKeys,nextKeys);
     }else{
-      const lengthChange = preChildren.length !== nextChildren.length;
-      hasChange = lengthChange ? false : hasChange;
+      hasChange = false;
+      // const lengthChange = preChildren.length !== nextChildren.length;
+      // hasChange = lengthChange ? false : hasChange;
     }
   } catch (err) {
   }
