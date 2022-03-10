@@ -8,7 +8,7 @@ export interface CommonProps{
 }
 
 export interface Props extends CommonProps{
-  children: React.ReactNode[];
+  children: React.ReactNode[] | any;
   renderCallback?: (containerInfo:IntersectionObserverEntryFace,containerVdom?:ReactDom,index?:number) => void;
 }
 
