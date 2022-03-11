@@ -23,6 +23,7 @@ yarn add lazylist-react
 | **root**   | `default`:`window`|HTMLElement| View |
 | **warpTag**   | `default`:div|HTMLElement| A label that wraps each child element |
 | **renderCallback** |   | (containerInfo,containerVdom,index) => void | Callback function with standard rendering quantity|
+| **equalityCheckLimit** | `default:100` | number | Limit for equality check of children keys |
 ## Usage
 
 ```tsx

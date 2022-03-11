@@ -45,7 +45,7 @@ export const useShouldUpdate = (pre:any, next:any) => {
   }
   hasChange = equal(preProps, nextProps);
   try {
-    if(preChildren.length<=100 && nextChildren.length<=100){
+    if(preChildren.length<=pre.equalityCheckLimit||100 && nextChildren.length<=next.equalityCheckLimit||100){
       const preKeys = preChildren.map(ele => ele.key);
       const nextKeys = nextChildren.map(ele => ele.key);
       hasChange = equal(preKeys,nextKeys);

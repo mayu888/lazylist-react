@@ -5,6 +5,7 @@ export interface CommonProps{
   renderCount?: number;
   threshold?: number;
   root?: null | HTMLElement;
+  equalityCheckLimit?:number;
 }
 
 export interface Props extends CommonProps{
